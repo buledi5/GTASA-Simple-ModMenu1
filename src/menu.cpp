@@ -8,15 +8,50 @@ namespace GTASimpleMenu
     static int currentCategory = 0;
     static int currentItem = 0;
 
+    std::vector<MenuCategory> CreateMenu()
+    {
+        return {
+            {
+                "PLAYER",
+                {
+                    {"Player Options", false},
+                    {"Health Display", false},
+                    {"Armor Display", false}
+                }
+            },
+            {
+                "VEHICLE",
+                {
+                    {"Vehicle Options", false},
+                    {"Vehicle Repair", false},
+                    {"Vehicle Display", false}
+                }
+            },
+            {
+                "WORLD",
+                {
+                    {"World Options", false},
+                    {"Time Display", false},
+                    {"Weather Display", false}
+                }
+            },
+            {
+                "SETTINGS",
+                {
+                    {"Menu Theme", false},
+                    {"Touch Controls", false},
+                    {"About", false}
+                }
+            }
+        };
+    }
+
     void NextItem()
     {
-        if (categories.empty())
-            return;
+        if (categories.empty()) return;
 
         auto& items = categories[currentCategory].items;
-
-        if (items.empty())
-            return;
+        if (items.empty()) return;
 
         currentItem = (currentItem + 1) %
                       static_cast<int>(items.size());
@@ -24,13 +59,10 @@ namespace GTASimpleMenu
 
     void PreviousItem()
     {
-        if (categories.empty())
-            return;
+        if (categories.empty()) return;
 
         auto& items = categories[currentCategory].items;
-
-        if (items.empty())
-            return;
+        if (items.empty()) return;
 
         currentItem--;
 
@@ -40,8 +72,7 @@ namespace GTASimpleMenu
 
     void NextCategory()
     {
-        if (categories.empty())
-            return;
+        if (categories.empty()) return;
 
         currentCategory =
             (currentCategory + 1) %
@@ -52,8 +83,7 @@ namespace GTASimpleMenu
 
     void PreviousCategory()
     {
-        if (categories.empty())
-            return;
+        if (categories.empty()) return;
 
         currentCategory--;
 
@@ -65,8 +95,7 @@ namespace GTASimpleMenu
 
     const MenuCategory* GetCurrentCategory()
     {
-        if (categories.empty())
-            return nullptr;
+        if (categories.empty()) return nullptr;
 
         return &categories[currentCategory];
     }
