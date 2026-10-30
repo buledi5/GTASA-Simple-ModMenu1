@@ -18,41 +18,17 @@ namespace GTASimpleMenu
         std::vector<MenuItem> items;
     };
 
-    inline std::vector<MenuCategory> CreateMenu()
-    {
-        return {
-            {
-                "PLAYER",
-                {
-                    {"Player Options", false},
-                    {"Health Display", false},
-                    {"Armor Display", false}
-                }
-            },
-            {
-                "VEHICLE",
-                {
-                    {"Vehicle Options", false},
-                    {"Vehicle Repair", false},
-                    {"Vehicle Display", false}
-                }
-            },
-            {
-                "WORLD",
-                {
-                    {"World Options", false},
-                    {"Time Display", false},
-                    {"Weather Display", false}
-                }
-            },
-            {
-                "SETTINGS",
-                {
-                    {"Menu Theme", false},
-                    {"Touch Controls", false},
-                    {"About", false}
-                }
-            }
-        };
-    }
+    std::vector<MenuCategory> CreateMenu();
+
+    // Item navigation
+    void NextItem();
+    void PreviousItem();
+
+    // Category navigation
+    void NextCategory();
+    void PreviousCategory();
+
+    // Selection access
+    const MenuCategory* GetCurrentCategory();
+    int GetCurrentItem();
 }
