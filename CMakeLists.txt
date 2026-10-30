@@ -13,6 +13,7 @@ add_library(
 
     src/main.cpp
     src/menu.cpp
+    src/menu_input.cpp
 )
 
 target_compile_options(
